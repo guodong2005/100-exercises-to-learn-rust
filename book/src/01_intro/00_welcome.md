@@ -98,6 +98,24 @@ Don't move on to the next section until you've solved the exercise for the curre
 
 Enjoy the course!
 
+## A quick teaser: `&'static`
+
+You may see types like `&'static str` in Rust. `&` means "reference", and `'static` is a
+**lifetime** that says "this reference is valid for the entire duration of the program".
+It does **not** mean "this value is stored forever"—just that the reference you have will
+never become dangling.
+
+Common places you get `'static`:
+- **String literals**, like `"hello"`, are baked into the program binary, so `&'static str`.
+- **Leaked** or intentionally global values (advanced cases).
+
+Is it about ownership? Lifetimes are related, but different:
+- **Ownership** answers "who owns the value and when does it get dropped?"
+- **Lifetimes** answer "how long can this reference be used safely?"
+
+So `&'static` is a reference whose lifetime is the whole program. It's often convenient,
+but Rust usually prefers shorter, more precise lifetimes.
+
 ## Author
 
 This course was written by [Luca Palmieri](https://www.lpalmieri.com/), Principal Engineering
